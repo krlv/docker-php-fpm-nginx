@@ -1,0 +1,9 @@
+#!/usr/bin/execlineb -P
+trap
+{
+    term
+    {
+        import -u ! kill -QUIT ${!}
+    }
+}
+nginx -g "daemon off;"
