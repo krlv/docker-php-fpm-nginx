@@ -1,3 +1,10 @@
 #!/usr/bin/execlineb -P
+trap
+{
+    term
+    {
+        import -u ! kill -QUIT ${!}
+    }
+}
 with-contenv
 php-fpm

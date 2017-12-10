@@ -1,0 +1,2 @@
+#!/usr/bin/execlineb -P
+s6-svwait -D /var/run/s6/services/nginx

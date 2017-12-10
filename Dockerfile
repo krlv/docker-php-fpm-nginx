@@ -34,13 +34,8 @@ RUN docker-php-source extract \
 COPY docker/s6/ /etc/
 COPY docker/nginx/nginx.conf /etc/nginx/nginx.conf
 COPY docker/nginx/nginx.vh.default.conf /etc/nginx/conf.d/default.conf
-
-# configure php-fpm
-RUN sed -i 's$access.log$;access.log$g' /usr/local/etc/php-fpm.d/docker.conf \
-    && echo "listen = /var/run/php-fpm.sock" >> /usr/local/etc/php-fpm.d/zz-docker.conf \
-    && echo "listen.owner = nginx" >> /usr/local/etc/php-fpm.d/zz-docker.conf \
-    && echo "listen.group = nginx" >> /usr/local/etc/php-fpm.d/zz-docker.conf \
-    && echo "listen.mode = 0660" >> /usr/local/etc/php-fpm.d/zz-docker.conf \
+COPY docker/php-fpm/docker.conf /usr/local/etc/php-fpm.d/docker.conf
+COPY docker/php-fpm/zz-docker.conf /usr/local/etc/php-fpm.d/zz-docker.conf
 
 EXPOSE 80
 
