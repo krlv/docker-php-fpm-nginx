@@ -1,4 +1,4 @@
-FROM php:7.2-fpm-alpine
+FROM php:7.4-rc-fpm-alpine
 
 # install S6 overlay
 ENV S6_OVERLAY_VERSION=v1.21.7.0
