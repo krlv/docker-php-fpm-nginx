@@ -17,7 +17,7 @@ RUN docker-php-source extract \
     && apk add --no-cache --virtual .build-deps $PHPIZE_DEPS \
     && pecl install \
        apcu \
-       xdebug \
+       xdebug-2.8.0beta2 \
     && docker-php-ext-install \
        pdo \
        pdo_mysql \
