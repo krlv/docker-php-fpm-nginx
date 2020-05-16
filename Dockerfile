@@ -1,7 +1,7 @@
 FROM php:7.4-fpm-alpine
 
 # install S6 overlay
-ENV S6_OVERLAY_VERSION=v1.22.1.0
+ENV S6_OVERLAY_VERSION=v2.0.0.1
 RUN apk add --no-cache curl \
     && curl -L -s https://github.com/just-containers/s6-overlay/releases/download/$S6_OVERLAY_VERSION/s6-overlay-amd64.tar.gz | tar xvzf - -C / \
     && apk del --no-cache curl
