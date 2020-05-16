@@ -1,7 +1,7 @@
-FROM php:7.4-rc-fpm-alpine
+FROM php:7.4-fpm-alpine
 
 # install S6 overlay
-ENV S6_OVERLAY_VERSION=v1.22.1.0
+ENV S6_OVERLAY_VERSION=v2.0.0.1
 RUN apk add --no-cache curl \
     && curl -L -s https://github.com/just-containers/s6-overlay/releases/download/$S6_OVERLAY_VERSION/s6-overlay-amd64.tar.gz | tar xvzf - -C / \
     && apk del --no-cache curl
@@ -17,7 +17,7 @@ RUN docker-php-source extract \
     && apk add --no-cache --virtual .build-deps $PHPIZE_DEPS \
     && pecl install \
        apcu \
-       xdebug-2.8.0beta2 \
+       xdebug-2.9.5 \
     && docker-php-ext-install \
        pdo \
        pdo_mysql \
